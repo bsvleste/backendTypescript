@@ -1,9 +1,12 @@
-import { CategoryController } from '@modules/cars/controllers/CategoryController';
+import { createCategoryController } from '@modules/cars/UseCases/createCategory';
+import { listCategoriesController } from '@modules/cars/UseCases/listCategories';
 import {Router } from 'express'
 
 const categoriesRoutes = Router();
-const categoriController = new CategoryController();
-categoriesRoutes.post('/', categoriController.create)
-categoriesRoutes.get('/', categoriController.list)
-
+categoriesRoutes.post('/', (req,res)=>{
+  return  createCategoryController.handle(req,res)
+})
+categoriesRoutes.get("/",(req,res)=>{
+  return listCategoriesController.handle(req,res);
+})
 export {categoriesRoutes}
