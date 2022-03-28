@@ -3,13 +3,13 @@ interface IRequest{
   name:string,
   description:string
 }
-export class CreateSpecificationServices{
+export class CreateSpecificationUseCase{
   constructor(private specificationsRepository:ISpecificationRepository){
 
   }
   execute({name,description}:IRequest):void{
-    const specification =  this.specificationsRepository.findByName(name)
-    if(specification)
+    const specificationAlreadyExists =  this.specificationsRepository.findByName(name)
+    if(specificationAlreadyExists)
     throw new Error("Specification already exists")
     this.specificationsRepository.create({ name, description})
   }

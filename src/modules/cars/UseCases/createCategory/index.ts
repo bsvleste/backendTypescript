@@ -1,6 +1,6 @@
-import { CategoryRepository } from "@modules/cars/repositories/CategoriesRepository";
 import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 import { CreateCategoryController } from './CreateCategoryController';
+import { CategoryRepository } from '@modules/cars/repositories/implementations/CategoriesRepository';
 
 const categoryRepository =  CategoryRepository.getInstance();
 

@@ -1,5 +1,5 @@
-import { Category } from '../models/Category';
-import { ICategoriesRepository, ICreateCategoryDTO } from './ICategoriesRepository';
+import { Category } from "@modules/cars/models/Category";
+import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
 
 //padrao de projeto singleton
