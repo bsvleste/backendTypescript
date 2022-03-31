@@ -9,6 +9,7 @@ const upload = multer({
   dest:"./tmp",
 })
 categoriesRoutes.post('/', (req,res)=>{
+  console.log("Create funfiodaca12233")
   return  createCategoryController.handle(req,res)
 })
 categoriesRoutes.get("/",(req,res)=>{
