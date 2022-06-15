@@ -13,6 +13,7 @@ categoriesRoutes.post('/', (req,res)=>{
   return  createCategoryController.handle(req,res)
 })
 categoriesRoutes.get("/",(req,res)=>{
+  console.log("Ola estamos online")
   return listCategoriesController.handle(req,res);
 })
 categoriesRoutes.post('/import',upload.single("file"),(req,res)=>{

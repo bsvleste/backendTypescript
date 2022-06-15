@@ -31,5 +31,5 @@
   },
   "include": [
     "src/**/*"
-  ]
+, "src/database/app-data-source.ts"  ]
 }
