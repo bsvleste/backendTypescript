@@ -1,17 +1,17 @@
 import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 
 
-interface IRequest{
+interface IRequest {
   name: string;
   description: string
 }
 export class CreateCategoryUseCase {
-  constructor(private categoryRepository:ICategoriesRepository) {
+  constructor(private categoryRepository: ICategoriesRepository) {
 
   }
 
-  execute({ name, description }:IRequest):void {
-    const categoryAlreadyExist = this.categoryRepository.findByName(name);
+  async execute({ name, description }: IRequest): Promise<void> {
+    const categoryAlreadyExist = await this.categoryRepository.findByName(name);
     if (categoryAlreadyExist) {
       throw new Error('Category already exists');
     }

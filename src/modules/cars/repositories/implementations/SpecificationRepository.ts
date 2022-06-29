@@ -1,27 +1,27 @@
-import { Specification } from "@modules/cars/models/Specification";
+import { Specification } from "@modules/cars/entities/Specification";
 import { ICreateSpecificationDTO, ISpecificationRepository } from "../ISpecificationRepository";
 
 
 
 //padrao de projeto singleton
 export class SpecificationRepository implements ISpecificationRepository {
-  private specifications:Specification[];
+  private specifications: Specification[];
 
   private static INSTANCE: SpecificationRepository;
   private constructor() {
     this.specifications = [];
   }
-  public static getInstance():SpecificationRepository{
-      if(!SpecificationRepository.INSTANCE){
-        SpecificationRepository.INSTANCE = new SpecificationRepository()
-      }
-      return SpecificationRepository.INSTANCE
+  public static getInstance(): SpecificationRepository {
+    if (!SpecificationRepository.INSTANCE) {
+      SpecificationRepository.INSTANCE = new SpecificationRepository()
+    }
+    return SpecificationRepository.INSTANCE
   }
 
-  create({ name, description }:ICreateSpecificationDTO):void {
+  create({ name, description }: ICreateSpecificationDTO): void {
     const specification = new Specification();
     Object.assign(
-     specification,
+      specification,
       {
         name,
         description,
@@ -31,12 +31,12 @@ export class SpecificationRepository implements ISpecificationRepository {
     this.specifications.push(specification);
   }
 
-  list():Specification[] {
+  list(): Specification[] {
     return this.specifications;
   }
 
-  findByName(name:string):Specification {
-    const specification = this.specifications.find((specification) =>specification.name === name);
+  findByName(name: string): Specification {
+    const specification = this.specifications.find((specification) => specification.name === name);
     return specification;
   }
 }

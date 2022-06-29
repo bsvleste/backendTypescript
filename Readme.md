@@ -1,3 +1,4 @@
+docker build -t rentx .
 rodar o docker run -p 3333:3333 rentx, para inicializar o container
 docker compose up para criar conteiner com compose
 

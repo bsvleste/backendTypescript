@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { LIstCategoriesUseCase } from './LIstCategoriesUseCase';
-export class ListCategoriesController{
-  constructor(private listCategoriesUseCase:LIstCategoriesUseCase){
+export class ListCategoriesController {
+  constructor(private listCategoriesUseCase: LIstCategoriesUseCase) {
 
   }
-  handle(req:Request,res:Response):Response{
-    const listCategories = this.listCategoriesUseCase.execute();
+  async handle(req: Request, res: Response): Promise<Response> {
+    const listCategories = await this.listCategoriesUseCase.execute();
     return res.json(listCategories)
   }
 }
