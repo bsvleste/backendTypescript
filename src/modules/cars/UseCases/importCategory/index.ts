@@ -1,4 +1,4 @@
-import { CategoryRepository } from "@modules/cars/repositories/implementations/CategoriesRepository";
+/* import { CategoryRepository } from "@modules/cars/repositories/implementations/CategoriesRepository";
 import { ImportCategoryController } from "./ImportCategoryController";
 import { ImportCategoryUseCase } from "./ImportCategoryUseCase";
 export default (): ImportCategoryController => {
@@ -9,3 +9,4 @@ export default (): ImportCategoryController => {
   return importCategoryController
 
 }
+ */
