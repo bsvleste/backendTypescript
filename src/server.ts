@@ -17,5 +17,5 @@ app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(router)
-app.listen(3333, () => { console.log("parei na aula capt3/continuando a app/03-injecao/aula2") })
+app.listen(3333, () => { console.log("parei na aula capptulo 04 - user /tratamento de execao/") })
 

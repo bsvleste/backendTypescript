@@ -10,7 +10,7 @@ export const myDataSource = new DataSource({
     database: "rentx",
     migrations: ["src/database/migrations/*.ts"],
     entities: ["src/**/**/entities/*.ts"],
-    logging: true,
-    synchronize: true,
+    logging: false,
+    synchronize: false,
     migrationsTableName: 'custom_migration_table',
 })

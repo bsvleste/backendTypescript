@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from 'uuid';
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity("categories")
+@Entity("categorie")
 export class Category {
   @PrimaryColumn()
   id?: string
@@ -13,7 +13,7 @@ export class Category {
   description: string;
 
   @CreateDateColumn()
-  create_at: Date
+  created_at: Date
 
   constructor() {
     if (!this.id) {

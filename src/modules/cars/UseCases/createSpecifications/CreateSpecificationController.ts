@@ -9,5 +9,4 @@ export class CreateSpecificationController{
     await createSpecificationsUseCase.execute({name,description})
     return res.status(201).json({message:"Cadastrodo com sucesso"});
  }
-
 }

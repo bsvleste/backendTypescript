@@ -10,9 +10,7 @@ export class CreateCategoryController{
     await createCategoryUseCase.execute({name,description})
     return res.status(201).json({message:"Cadastrodo com sucesso"});
   }
-
   }
-
 
 
 
