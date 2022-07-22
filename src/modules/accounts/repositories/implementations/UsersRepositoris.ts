@@ -19,11 +19,14 @@ import { myDataSource } from "src/database/app-data-source";
     const userEmail = await this.repository.findOneBy({email})
     return userEmail
     }
-  async create({name,email,driver_license,password}):Promise<void>   {
+  async create({name,email,driver_license,password,avatar,id}):Promise<void>   {
     const user = this.repository.create({
       name,
-      email,driver_license,
-      password
+      email,
+      driver_license,
+      password,
+      avatar,
+      id
     });
     await this.repository.save(user)
      }

@@ -1,31 +1,34 @@
 import { Response,Request, NextFunction } from 'express';
 import {verify} from'jsonwebtoken'
 import { UsersRepository } from './../modules/accounts/repositories/implementations/UsersRepositoris';
-
+import {AppError} from '../errors/AppError'
 interface IPlayload{
   sub:string
 }
 
-export async function ensureAutehnticated(req:Request,res:Response,next:NextFunction){
+export async function ensureAuthenticated(req:Request,res:Response,next:NextFunction){
 
   const authHeader = req.headers.authorization;
 
   if(!authHeader){
-    throw new Error("Token missing");
+    throw new AppError("Token missing",401);
   }
 
   const[,token] = authHeader.split(" ");
   try{
-    const {sub:user_id} = verify(token,"aad36f93de62af67da06c264e0715ead0a20326e") as IPlayload
+    const {sub:userId} = verify(token,"aad36f93de62af67da06c264e0715ead0a20326e") as IPlayload
     const userRepository = new UsersRepository()
-    const user = userRepository.findById(user_id)
+    const user = userRepository.findById(userId)
 
     if(!user){
-      throw new Error("User not find")
+      throw new AppError("User does not exists",401)
+    }
+    req.user = {
+      id:userId
     }
     next();
   }catch{
-    throw new Error(`Invalid token`)
+    throw new AppError(`Invalid token`,401)
   }
 
   return
