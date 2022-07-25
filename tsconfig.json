@@ -26,7 +26,10 @@
       "@routes/*": ["./src/routes/*"],
       "@repositories/*": ["./src/repositories/*"],
       "@services/*": ["./src/services/*"],
-      "@modules/*": ["./src/modules/*"]
+      "@modules/*": ["./src/modules/*"],
+      "@shared/*":["./src/shared/*"],
+      "@errors/*":["./src/errors/*"],
+      "@utils/*":["./src/utils/*"]
     }
   },
   "include": [

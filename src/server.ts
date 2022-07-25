@@ -1,12 +1,14 @@
-import "reflect-metadata"
-import './shared/container'
+import "reflect-metadata";
+import './shared/container';
+
 import express,{Request,Response,NextFunction} from 'express';
 import "express-async-errors"
 import swaggerUi from 'swagger-ui-express'
 import { router } from './routes'
 import swaggerFile from './swagger.json'
 import { myDataSource } from './database/app-data-source';
-import{AppError} from './errors/AppError'
+import{AppError} from "./errors/AppError"
+
 myDataSource.initialize().then(() => {
   console.log("Conecctado com sucesso")
 }).catch((err) => {
