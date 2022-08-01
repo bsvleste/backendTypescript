@@ -1,14 +1,14 @@
 import { ICategoriesRepository, ICreateCategoryDTO } from '../ICategoriesRepository';
-import { Category } from '@modules/cars/entities/Category';
+import { Category } from '@modules/cars/infra/typeorm/entities/Category';
 export class CategoriesRepositoryInMemory implements ICategoriesRepository {
-    
-    categories:Category[]=[]
-    
-    async  findByName(name: string): Promise<Category> {
-        const category = this.categories.find(category=>category.name === name)
+
+    categories: Category[] = []
+
+    async findByName(name: string): Promise<Category> {
+        const category = this.categories.find(category => category.name === name)
         return category
     }
-   async list(): Promise<Category[]> {
+    async list(): Promise<Category[]> {
         const listAllCategories = this.categories
         return listAllCategories
     }
@@ -16,8 +16,8 @@ export class CategoriesRepositoryInMemory implements ICategoriesRepository {
 
         const category = new Category();
 
-        Object.assign(category,{
-            name,description
+        Object.assign(category, {
+            name, description
         })
         this.categories.push(category)
     }

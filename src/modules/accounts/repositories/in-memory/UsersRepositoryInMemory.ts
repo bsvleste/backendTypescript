@@ -1,14 +1,14 @@
 import { IUsersRepository } from '../IUsersRespository';
 import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
-import { User } from '../../entities/User';
-export class UsersRepositoryInMemory implements IUsersRepository{
-   users:User[] = []
-   
-    async create({driver_license,name,email,password}: ICreateUserDTO): Promise<void> {
+import { User } from '../../infra/typeorm/entities/User';
+export class UsersRepositoryInMemory implements IUsersRepository {
+    users: User[] = []
+
+    async create({ driver_license, name, email, password }: ICreateUserDTO): Promise<void> {
 
         const user = new User();
 
-        Object.assign(user,{
+        Object.assign(user, {
             name,
             email,
             password,
@@ -17,11 +17,11 @@ export class UsersRepositoryInMemory implements IUsersRepository{
         this.users.push(user)
     }
     async findByEmail(email: string): Promise<User> {
-        return this.users.find(user=>user.email === user.email)
+        return this.users.find(user => user.email === user.email)
 
     }
     async findById(id: string): Promise<User> {
-        return this.users.find(user=>user.id === id)
+        return this.users.find(user => user.id === id)
     }
 
 }

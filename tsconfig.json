@@ -2,7 +2,9 @@
   "compilerOptions": {
     "target": "es2017",
     "module": "commonjs",
-    "lib": ["es6"],
+    "lib": [
+      "es6"
+    ],
     "allowJs": true,
     "outDir": "./dist",
     "rootDir": "./src",
@@ -19,20 +21,46 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@controllers/*": ["./src/controllers/*"],
-      "@models/*": ["./src/models/*"],
-      "@views/*": ["./src/views/*"],
-      "@config/*": ["./src/config/*"],
-      "@routes/*": ["./src/routes/*"],
-      "@repositories/*": ["./src/repositories/*"],
-      "@services/*": ["./src/services/*"],
-      "@modules/*": ["./src/modules/*"],
-      "@shared/*":["./src/shared/*"],
-      "@errors/*":["./src/errors/*"],
-      "@utils/*":["./src/utils/*"]
+      "@controllers/*": [
+        "./src/controllers/*"
+      ],
+      "@models/*": [
+        "./src/models/*"
+      ],
+      "@views/*": [
+        "./src/views/*"
+      ],
+      "@config/*": [
+        "./src/config/*"
+      ],
+      "@routes/*": [
+        "src/shared/infra/http/routes/*"
+      ],
+      "@repositories/*": [
+        "./src/repositories/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@modules/*": [
+        "./src/modules/*"
+      ],
+      "@shared/*": [
+        "./src/shared/*"
+      ],
+      "@errors/*": [
+        "src/shared/errors/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@database/*": [
+        "src/shared/infra/database/*"
+      ]
     }
   },
   "include": [
-    "src/**/*"
-, "src/database/app-data-source.ts"  ]
+    "src/**/*",
+    "src/modules/cars/infra/typeorm/database/app-data-source.ts"
+  ]
 }

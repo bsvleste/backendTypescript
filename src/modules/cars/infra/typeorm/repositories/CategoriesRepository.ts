@@ -1,13 +1,12 @@
-import { Category } from "@modules/cars/entities/Category";
-import { getRepository, Repository } from "typeorm";
-import { myDataSource } from "src/database/app-data-source";
-import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
+import { Category } from "@modules/cars/infra/typeorm/entities/Category";
+import { Repository } from "typeorm";
+import { myDataSource } from "@shared/infra/typeorm/app-data-source";
+import { ICategoriesRepository, ICreateCategoryDTO } from "@modules/cars/repositories/ICategoriesRepository";
 
 export class CategoryRepository implements ICategoriesRepository {
 
-  private repository : Repository<Category>
+  private repository: Repository<Category>
 
-  private static INSTANCE: CategoryRepository;
   constructor() {
     this.repository = myDataSource.getRepository(Category);
   }

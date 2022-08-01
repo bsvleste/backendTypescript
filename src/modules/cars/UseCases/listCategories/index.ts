@@ -1,4 +1,4 @@
-import { CategoryRepository } from "@modules/cars/repositories/implementations/CategoriesRepository";
+import { CategoryRepository } from "@modules/cars/infra/typeorm/repositories/CategoriesRepository";
 import { ListCategoriesController } from "./ListCategoriesController";
 import { LIstCategoriesUseCase } from "./LIstCategoriesUseCase";
 
