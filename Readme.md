@@ -5,6 +5,9 @@ docker compose up para criar conteiner com compose
 usar npm run migration:create src/shared/infra/typeorm/migrations/"nome da migrations" para crias as migrations
 abriar o servido do windows e parar o postgre para funcionar o docker
 
+#Configurare e pesquisar como fazer  a conexao com datasource  para criar seed de usuario admin 
+
+criar a migration de cars
 
 #Cadastro de carro
 	##Requesitos funcionais

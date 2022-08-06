@@ -34,7 +34,7 @@
         "./src/config/*"
       ],
       "@routes/*": [
-        "src/shared/infra/http/routes/*"
+        "./src/shared/infra/http/routes/*"
       ],
       "@repositories/*": [
         "./src/repositories/*"
@@ -49,18 +49,18 @@
         "./src/shared/*"
       ],
       "@errors/*": [
-        "src/shared/errors/*"
+        "./src/shared/errors/*"
       ],
       "@utils/*": [
         "./src/utils/*"
       ],
       "@database/*": [
-        "src/shared/infra/database/*"
+        "./src/shared/infra/database/*"
       ]
     }
   },
   "include": [
     "src/**/*",
-    "src/modules/cars/infra/typeorm/database/app-data-source.ts"
+    "src/shared/infra/typeorm/app-data-source.ts"
   ]
 }

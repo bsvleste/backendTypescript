@@ -8,7 +8,7 @@ export const myDataSource = new DataSource({
     username: "docker",
     password: "m4r1n42017",
     database: "rentx",
-    migrations: ["src/database/migrations/*.ts"],
+    migrations: ["src/shared/infra/typeorm/migrations/*.ts"],
     entities: ["src/**/**/entities/*.ts"],
     logging: false,
     synchronize: false,
