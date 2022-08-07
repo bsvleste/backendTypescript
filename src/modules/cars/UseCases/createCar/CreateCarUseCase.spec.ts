@@ -54,6 +54,6 @@ describe("Create car", () => {
             fine_amount: 60,
             license_plate: "ABC-124"
         });
-        expect(car.avaliable).toBe(true)
+        expect(car.available).toBe(true)
     })
 })

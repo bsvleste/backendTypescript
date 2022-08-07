@@ -11,7 +11,6 @@ export class CarsRepository implements ICarsRepository {
     constructor() {
         this.carRepository = myDataSource.getRepository(Car)
     }
-
     async create(
         {
             brand,
@@ -38,6 +37,25 @@ export class CarsRepository implements ICarsRepository {
     async findByLicensePlate(license_plate: string): Promise<Car> {
         const car = await this.carRepository.findOneBy({ license_plate })
         return car
+    }
+    async findAvailable(brand?: string, category_id?: string, name?: string): Promise<Car[]> {
+      const carsQuery = this.carRepository.createQueryBuilder("c")
+      .where("available = :available", {available:true});
+
+      if(brand){
+        carsQuery.andWhere("brand = :brand",{brand})
+      }
+
+      if(name){
+        carsQuery.andWhere("name = :name",{name})
+      }
+
+      if(category_id){
+        carsQuery.andWhere("category_id = :category_id",{category_id})
+      }
+
+      const cars =  await carsQuery.getMany();
+      return cars;
     }
 
 }
