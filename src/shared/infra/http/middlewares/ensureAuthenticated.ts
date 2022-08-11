@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken'
-import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepositoris';
+import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository';
 import { AppError } from '@shared/errors/AppError'
 interface IPlayload {
   sub: string

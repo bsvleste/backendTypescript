@@ -10,9 +10,9 @@ import { myDataSource } from '@shared/infra/typeorm/app-data-source';
 import { AppError } from "@shared/errors/AppError"
 
 myDataSource.initialize().then(() => {
-  console.log("Conecctado com sucesso")
+  console.log("Connect whit success")
 }).catch((err) => {
-  console.log(`Erro ao conectar ${err}`)
+  console.log(`Error ao connecter ${err}`)
 })
 const app = express();
 app.use(express.json());
@@ -28,9 +28,9 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   }
   return res.status(500).json({
     status: "error",
-    message: `Internal server erorr - ${error.message}`
+    message: `Internal server error - ${error.message}`
   })
 }
 )
-app.listen(3333, () => { console.log("parei na aula capptulo 04 - Testes e regras de negócio03 - aluguel") })
+app.listen(3333, () => { console.log("parei na aula capitulo04 - teste de integração") })
 

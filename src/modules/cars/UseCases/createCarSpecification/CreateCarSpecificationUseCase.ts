@@ -1,8 +1,9 @@
+import "reflect-metadata"
 import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
-import { inject, injectable } from 'tsyringe';
 import { AppError } from '@shared/errors/AppError';
 import { ISpecificationRepository } from '@modules/cars/repositories/ISpecificationRepository';
 import { Car } from '@modules/cars/infra/typeorm/entities/Cars';
+import { inject, injectable } from 'tsyringe';
 
 interface IRequest{
   car_id:string;
