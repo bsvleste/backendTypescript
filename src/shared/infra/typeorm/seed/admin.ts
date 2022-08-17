@@ -3,7 +3,6 @@ import { v4 as uuidV4 } from 'uuid';
 import { hash } from 'bcrypt'
 import { myDataSource } from '../app-data-source';
 import { User } from '../../../../modules/accounts/infra/typeorm/entities/User';
-import { Car } from "../../../../modules/cars/infra/typeorm/entities/Cars";
 
 async function create() {
 
@@ -19,12 +18,12 @@ async function create() {
         user.driver_license = "A",
         user.created_at = new Date(),
       await myDataSource.manager.save(user)
-      console.log(`Cadastraco com sucesso ${user.id}`)
+      console.log(`Connected user ${user.id}`)
       await myDataSource.close()
     }).catch((err) => {
-      console.log(`Erro ao conectar ${err}`)
+      console.log(`Err connect: ${err.message}`)
     })
 
 }
 
-create().then(() => console.log('Adminsitrador criado com sucesso'))
+create().then(() => console.log('admin created successfully'))

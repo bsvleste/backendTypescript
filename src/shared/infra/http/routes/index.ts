@@ -13,5 +13,5 @@ router.use("/categories", categoriesRoutes);
 router.use("/specifications", specificationRoutes);
 router.use("/users", userRouters);
 router.use("/rentals", rentalRoutes);
-router.use(authenticationRoutes);
+router.use("/sessions",authenticationRoutes);
 export { router }
