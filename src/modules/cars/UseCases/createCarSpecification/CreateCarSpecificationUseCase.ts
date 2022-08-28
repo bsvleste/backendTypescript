@@ -5,22 +5,22 @@ import { ISpecificationRepository } from '@modules/cars/repositories/ISpecificat
 import { Car } from '@modules/cars/infra/typeorm/entities/Cars';
 import { inject, injectable } from 'tsyringe';
 
-interface IRequest{
-  car_id:string;
-  specifications_id:string[];
+interface IRequest {
+  car_id: string;
+  specifications_id: string[];
 }
 @injectable()
-export class CreateCarSpecificationUseCase{
+export class CreateCarSpecificationUseCase {
   constructor(
     @inject("CarsRepository")
-    private carRepository:ICarsRepository,
+    private carRepository: ICarsRepository,
     @inject("SpecificationRepository")
-    private specificationsRepository:ISpecificationRepository
-  ){}
-  async execute({car_id,specifications_id}:IRequest):Promise<Car>{
+    private specificationsRepository: ISpecificationRepository
+  ) { }
+  async execute({ car_id, specifications_id }: IRequest): Promise<Car> {
     const carExists = await this.carRepository.findById(car_id)
-    if(!carExists){
-      throw new AppError("Car does not Exists ")
+    if (!carExists) {
+      throw new AppError("Car does not Exists")
     }
     const specifications = await this.specificationsRepository.findByIds(
       specifications_id
@@ -29,6 +29,6 @@ export class CreateCarSpecificationUseCase{
 
     await this.carRepository.create(carExists)
 
-      return carExists
+    return carExists
   }
 }

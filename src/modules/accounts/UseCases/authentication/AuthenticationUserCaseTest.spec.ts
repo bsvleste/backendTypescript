@@ -6,14 +6,14 @@ import { CreateUserUseCase } from '../createUser/CreateUserUseCase';
 import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
 import { AppError } from '@shared/errors/AppError';
 
-let authenticaseUserUseCase: AuthenticationUserUseCase
+let authenticateUserUseCase: AuthenticationUserUseCase
 let usersRepositoryInMemory: UsersRepositoryInMemory
 let createUserUseCase: CreateUserUseCase
 
 describe("Authentication user", () => {
     beforeEach(async () => {
         usersRepositoryInMemory = new UsersRepositoryInMemory();
-        authenticaseUserUseCase = new AuthenticationUserUseCase(usersRepositoryInMemory)
+        authenticateUserUseCase = new AuthenticationUserUseCase(usersRepositoryInMemory)
         createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory)
 
     })
@@ -28,7 +28,7 @@ describe("Authentication user", () => {
 
         await createUserUseCase.execute(user);
 
-        const result = await authenticaseUserUseCase.execute({
+        const result = await authenticateUserUseCase.execute({
             email: user.email,
             password: user.password
         })
@@ -36,30 +36,29 @@ describe("Authentication user", () => {
         expect(result).toHaveProperty("token")
 
     });
-    it("should not be able an noexistent user", () => {
-        expect(async () => {
-            await authenticaseUserUseCase.execute({
-                email: "false@gmail.com",
-                password: "Test123"
-            })
-        }).rejects.toBeInstanceOf(AppError)
+    it("should not be able an no existent user", async () => {
+        await expect(authenticateUserUseCase.execute({
+            email: "false@gmail.com",
+            password: "Test123"
+        })
+        ).rejects.toEqual(new AppError("Email or password incorrect"))
     });
 
-    it("should not be able to authentication with incorrect passqord", () => {
-        expect(async () => {
-            const user: ICreateUserDTO = {
-                name: "User Teste Error",
-                email: "user@user.com",
-                password: "123",
-                driver_license: "A"
+    it("should not be able to authentication with incorrect password", async () => {
 
-            }
-            await createUserUseCase.execute(user);
+        const user: ICreateUserDTO = {
+            name: "User Tests Error",
+            email: "user@user.com",
+            password: "123",
+            driver_license: "A"
 
-            await authenticaseUserUseCase.execute({
+        }
+        await createUserUseCase.execute(user);
+        await expect(
+            await authenticateUserUseCase.execute({
                 email: user.email,
-                password: "erropassword"
+                password: "err password"
             })
-        }).rejects.toBeInstanceOf(AppError)
+        ).rejects.toEqual(new AppError("Email or password incorrect"))
     })
 })

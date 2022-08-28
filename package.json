@@ -9,7 +9,7 @@
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "node dist/server.js",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
-    "test": "set NODE_ENV=test && jest",
+    "test": "set NODE_ENV=test && jest --runInBand --detectOpenHandles",
     "typeorm": "typeorm-ts-node-commonjs -d ./src/shared/infra/typeorm/app-data-source.ts",
     "migration:generate": "npm run typeorm migration:generate",
     "migration:show": "npm run typeorm migration:show",

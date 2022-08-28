@@ -3,6 +3,7 @@ import { IRentalsRepository } from "@modules/rental/repositories/IRentalsReposit
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider"
 import { AppError } from "@shared/errors/AppError"
 import { inject, injectable } from "tsyringe"
+import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
 
 
 interface IRquest {
@@ -16,7 +17,9 @@ export class CreateRentalUseCase {
       @inject("RentalsRepository")
       private rentalRepository: IRentalsRepository,
       @inject("DaysDateProvider")
-        private dateProvider:IDateProvider
+      private dateProvider:IDateProvider,
+      @inject("CarsRepository")
+      private carRepository:ICarsRepository
     ) { }
     async execute({ car_id, expected_return_date, user_id }: IRquest): Promise<Rental> {
         const minimumRentalHour = 24
@@ -42,6 +45,7 @@ export class CreateRentalUseCase {
             user_id,
             expected_return_date
         })
+        await this.carRepository.updateAvailable(car_id,false)
 
         return rental
     }

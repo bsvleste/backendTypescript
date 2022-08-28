@@ -5,4 +5,4 @@ const authenticationRoutes = Router()
 
 const authenticationUserController = new AuthenticationUserController()
 authenticationRoutes.post('/', authenticationUserController.handle)
-export{authenticationRoutes}
+export { authenticationRoutes }

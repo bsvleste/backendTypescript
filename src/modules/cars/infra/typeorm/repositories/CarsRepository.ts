@@ -11,6 +11,15 @@ export class CarsRepository implements ICarsRepository {
     constructor() {
         this.carRepository = myDataSource.getRepository(Car)
     }
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+    await this.carRepository.createQueryBuilder()
+    .update()
+    .set({available})
+    .where("id =:id")
+    .setParameters({id})
+    .execute()
+
+  }
   async findById(id: string): Promise<Car> {
     const car  = await this.carRepository.findOneBy({id})
     return car;
